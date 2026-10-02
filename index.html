@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>🎓 Online Exam Management System</h1>
+        <p>Question Bank • Exams • Timer • Evaluation • Results • Reports</p>
+    </header>
+
+    <!-- Dashboard -->
+    <section class="dashboard">
+
+        <div class="card">
+            <h3>Questions</h3>
+            <span id="totalQuestions">0</span>
+        </div>
+
+        <div class="card">
+            <h3>Exams</h3>
+            <span id="totalExams">0</span>
+        </div>
+
+        <div class="card">
+            <h3>Attempts</h3>
+            <span id="totalAttempts">0</span>
+        </div>
+
+        <div class="card">
+            <h3>Average Score</h3>
+            <span id="averageScore">0%</span>
+        </div>
+
+    </section>
+
+
+    <!-- Question Bank -->
+    <section class="panel">
+
+        <h2>📚 Question Bank</h2>
+
+        <div class="search-area">
+
+            <input
+                type="text"
+                id="questionSearch"
+                placeholder="Search questions..."
+            >
+
+            <select id="subjectFilter">
+                <option value="all">All Subjects</option>
+            </select>
+
+            <select id="difficultyFilter">
+                <option value="all">All Difficulty</option>
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+            </select>
+
+        </div>
+
+        <div id="questionBank" class="question-bank"></div>
+
+    </section>
+
+
+    <!-- Add Question -->
+    <section class="panel">
+
+        <h2>➕ Add Question</h2>
+
+        <form id="questionForm">
+
+            <input
+                type="text"
+                id="questionText"
+                placeholder="Enter question"
+                required
+            >
+
+            <input
+                type="text"
+                id="optionA"
+                placeholder="Option A"
+                required
+            >
+
+            <input
+                type="text"
+                id="optionB"
+                placeholder="Option B"
+                required
+            >
+
+            <input
+                type="text"
+                id="optionC"
+                placeholder="Option C"
+                required
+            >
+
+            <input
+                type="text"
+                id="optionD"
+                placeholder="Option D"
+                required
+            >
+
+            <select id="correctAnswer" required>
+                <option value="">Correct Answer</option>
+                <option value="A">Option A</option>
+                <option value="B">Option B</option>
+                <option value="C">Option C</option>
+                <option value="D">Option D</option>
+            </select>
+
+            <input
+                type="text"
+                id="questionSubject"
+                placeholder="Subject"
+                required
+            >
+
+            <select id="questionDifficulty" required>
+                <option value="">Difficulty</option>
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+            </select>
+
+            <button type="submit">
+                Add Question
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- Exam Creation -->
+    <section class="panel">
+
+        <h2>📝 Create Exam</h2>
+
+        <form id="examForm">
+
+            <input
+                type="text"
+                id="examName"
+                placeholder="Exam Name"
+                required
+            >
+
+            <select id="examSubject" required>
+                <option value="">Select Subject</option>
+            </select>
+
+            <input
+                type="number"
+                id="examQuestionCount"
+                placeholder="Number of Questions"
+                min="1"
+                required
+            >
+
+            <input
+                type="number"
+                id="examDuration"
+                placeholder="Duration (minutes)"
+                min="1"
+                required
+            >
+
+            <button type="submit">
+                Create Exam
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- Available Exams -->
+    <section class="panel">
+
+        <h2>📋 Available Exams</h2>
+
+        <div id="examList" class="exam-list"></div>
+
+    </section>
+
+
+    <!-- Exam Area -->
+    <section
+        class="panel exam-area"
+        id="examArea"
+        style="display:none;"
+    >
+
+        <div class="exam-header">
+
+            <div>
+                <h2 id="activeExamName"></h2>
+                <p id="examProgress"></p>
+            </div>
+
+            <div class="timer">
+                ⏱️ <span id="timer">00:00</span>
+            </div>
+
+        </div>
+
+        <div id="examQuestions"></div>
+
+        <button
+            id="submitExam"
+            class="submit-button"
+            onclick="submitExam()"
+        >
+            Submit Exam
+        </button>
+
+    </section>
+
+
+    <!-- Results -->
+    <section class="panel">
+
+        <h2>🏆 Results & Ranking</h2>
+
+        <div id="results"></div>
+
+    </section>
+
+
+    <!-- Reports -->
+    <section class="panel">
+
+        <h2>📊 Exam Reports</h2>
+
+        <div class="report-buttons">
+
+            <button onclick="generateReport()">
+                Generate Report
+            </button>
+
+            <button onclick="printReport()">
+                Print Report
+            </button>
+
+        </div>
+
+        <div id="report"></div>
+
+    </section>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
